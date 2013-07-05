@@ -3,18 +3,16 @@ dotfiles
 
 My dotfiles
 
-VIM
-========
+##Pre-requisite packages##
+
+###VIM###
 Things needed: [Vundle][1]
 
 
-ZSH
-========
+###ZSH###
 Things needed: [Oh-my-zsh][2]
 
-
-TMUX
-========
+###TMUX###
 Things needed: Nothing, nobody.
 
 
