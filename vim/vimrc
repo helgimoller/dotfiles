@@ -1,0 +1,120 @@
+ set nocompatible               " be iMproved
+ filetype off                   " required!
+ syntax on
+
+
+ set rtp+=~/.vim/bundle/vundle/
+ call vundle#rc()
+
+ " let Vundle manage Vundle
+ " required! 
+ Bundle 'gmarik/vundle'
+
+ " My Bundles here:
+ "
+ " original repos on github
+ Bundle 'tpope/vim-fugitive'
+ Bundle 'Lokaltog/vim-easymotion'
+ Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+ Bundle 'kien/ctrlp.vim'
+ Bundle 'scrooloose/nerdtree'
+ Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+ Bundle 'scrooloose/syntastic'
+ Bundle 'klen/python-mode'
+ Bundle 'Lokaltog/vim-powerline'
+ Bundle 'majutsushi/tagbar'
+ Bundle 'Yggdroot/indentLine'
+ Bundle 'mattn/zencoding-vim'
+ Bundle 'klen/python-mode'
+ Bundle 'flazz/vim-colorschemes'
+ " vim-scripts repos
+ "
+ " non github repos
+ "Bundle 'git://git.wincent.com/command-t.git'
+ " ...
+
+ filetype plugin indent on     " required!
+ "
+ " Brief help
+ " :BundleList          - list configured bundles
+ " :BundleInstall(!)    - install(update) bundles
+ " :BundleSearch(!) foo - search(or refresh cache first) for foo
+ " :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+ "
+ " see :h vundle for more details or wiki for FAQ
+ " NOTE: comments after Bundle command are not allowed..
+ colorscheme jellybeans
+
+ "Enable vim modeline parsing
+ set  modeline
+
+ "Key-bindings
+ "NERDTree
+ nmap <C-i> :NERDTreeToggle<CR>
+ let NERDTreeIgnore = ['\.pyc$']
+ "Tagbar
+ nmap <C-t> :TagbarOpen<CR>
+ "Turninn
+ let $PYTHONPATH .= ":/Developer/Panda3d/lib/"
+ 
+ let ropevim_vim_completion = 1
+ let ropevim_extended_complete = 1
+ let g:ropevim_autoimport_modules = ["os.*","traceback","direct.*", "xml.etree"]
+ imap <c-space> <C-R>=RopeCodeAssistInsertMode()<CR>
+ map <C-g>d :call RopeGotoDefinition()<CR>
+ nmap <c-b> :CtrlPBuffer<CR>
+
+" Python-mode
+" Activate rope
+" Keys:
+" K             Show python docs
+" <Ctrl-Space>  Rope autocomplete
+" <Ctrl-c>g     Rope goto definition
+" <Ctrl-c>d     Rope show documentation
+" <Ctrl-c>f     Rope find occurrences
+" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
+" [[            Jump on previous class or function (normal, visual, operator modes)
+" ]]            Jump on next class or function (normal, visual, operator modes)
+" [M            Jump on previous class or method (normal, visual, operator modes)
+" ]M            Jump on next class or method (normal, visual, operator modes)
+let g:pymode_rope = 1
+
+" Documentation
+let g:pymode_doc = 1
+let g:pymode_doc_key = 'K'
+
+"Linting
+let g:pymode_lint = 1
+let g:pymode_lint_checker = "pyflakes,pep8"
+" Auto check on save
+let g:pymode_lint_write = 1
+
+" Support virtualenv
+let g:pymode_virtualenv = 1
+
+" Enable breakpoints plugin
+let g:pymode_breakpoint = 1
+let g:pymode_breakpoint_key = '<leader>b'
+
+" syntax highlighting
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+
+" Don't autofold code
+let g:pymode_folding = 0
+
+" Add the virtualenv's site-packages to vim path
+py << EOF
+import os.path
+from os import getcwd
+import sys
+import vim
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    sys.path.insert(0, project_base_dir)
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+    sys.path[:0] = [getcwd()]
+EOF
