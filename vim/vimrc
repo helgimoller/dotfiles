@@ -27,6 +27,7 @@
  Bundle 'mattn/zencoding-vim'
  Bundle 'klen/python-mode'
  Bundle 'flazz/vim-colorschemes'
+ Bundle 'oblitum/rainbow'
  " vim-scripts repos
  "
  " non github repos
@@ -104,6 +105,9 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 
 " Don't autofold code
 let g:pymode_folding = 0
+
+" The Rainbowmaker
+au FileType c,cpp,objc,python call rainbow#load()
 
 " Add the virtualenv's site-packages to vim path
 py << EOF
