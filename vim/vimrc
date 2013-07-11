@@ -54,9 +54,8 @@
  nmap <C-i> :NERDTreeToggle<CR>
  let NERDTreeIgnore = ['\.pyc$']
  "Tagbar
- nmap <C-t> :TagbarOpen<CR>
+ nmap <C-t> :TagbarToggle<CR>
  "Turninn
- let $PYTHONPATH .= ":/Developer/Panda3d/lib/"
  
  let ropevim_vim_completion = 1
  let ropevim_extended_complete = 1
