@@ -46,6 +46,13 @@
  " NOTE: comments after Bundle command are not allowed..
  colorscheme jellybeans
 
+ "Powerline settings
+ set laststatus=2
+ set t_Co=256
+ let g:Powerline_symbols = 'fancy'
+
+
+
  "Enable vim modeline parsing
  set  modeline
 
