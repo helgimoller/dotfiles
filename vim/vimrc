@@ -28,6 +28,10 @@
  Bundle 'klen/python-mode'
  Bundle 'flazz/vim-colorschemes'
  Bundle 'oblitum/rainbow'
+ Bundle 'tomtom/tlib_vim'
+ Bundle 'vim-addon-mw-utils'
+ Bundle 'garbas/vim-snipmate'
+ Bundle 'agoconcept/vim-snippets'
  " vim-scripts repos
  "
  " non github repos
@@ -44,7 +48,7 @@
  "
  " see :h vundle for more details or wiki for FAQ
  " NOTE: comments after Bundle command are not allowed..
- colorscheme jellybeans
+ colorscheme solarized
 
  "Powerline settings
  set laststatus=2
@@ -117,8 +121,8 @@ au FileType c,cpp,objc,python call rainbow#load()
 
 " Add the virtualenv's site-packages to vim path
 py << EOF
+import os
 import os.path
-from os import getcwd
 import sys
 import vim
 if 'VIRTUAL_ENV' in os.environ:
@@ -126,5 +130,34 @@ if 'VIRTUAL_ENV' in os.environ:
     sys.path.insert(0, project_base_dir)
     activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
     execfile(activate_this, dict(__file__=activate_this))
-    sys.path[:0] = [getcwd()]
+    sys.path[:0] = [os.getcwd()]
 EOF
+
+function! DoPrettyXML()
+  " save the filetype so we can restore it later
+  let l:origft = &ft
+  set ft=
+  " delete the xml header if it exists. This will
+  " permit us to surround the document with fake tags
+  " without creating invalid xml.
+  1s/<?xml .*?>//e
+  " insert fake tags around the entire document.
+  " This will permit us to pretty-format excerpts of
+  " XML that may contain multiple top-level elements.
+  0put ='<PrettyXML>'
+  $put ='</PrettyXML>'
+  silent %!xmllint --format -
+  " xmllint will insert an <?xml?> header. it's easy enough to delete
+  " if you don't want it.
+  " delete the fake tags
+  2d
+  $d
+  " restore the 'normal' indentation, which is one extra level
+  " too deep due to the extra tags we wrapped around the document.
+  silent %<
+  " back to home
+  1
+  " restore the filetype
+  exe "set ft=" . l:origft
+endfunction
+command! PrettyXML call DoPrettyXML()
