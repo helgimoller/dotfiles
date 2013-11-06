@@ -2,6 +2,8 @@
  filetype off                   " required!
  syntax on
 
+""Haskell stuff
+let g:haskell_conceal_wide = 1
 
  set rtp+=~/.vim/bundle/vundle/
  call vundle#rc()
@@ -24,14 +26,16 @@
  Bundle 'Lokaltog/vim-powerline'
  Bundle 'majutsushi/tagbar'
  Bundle 'Yggdroot/indentLine'
- Bundle 'mattn/zencoding-vim'
+" Bundle 'mattn/zencoding-vim'
  Bundle 'klen/python-mode'
  Bundle 'flazz/vim-colorschemes'
  Bundle 'oblitum/rainbow'
  Bundle 'tomtom/tlib_vim'
- Bundle 'vim-addon-mw-utils'
+ Bundle 'MarcWeber/vim-addon-mw-utils'
  Bundle 'garbas/vim-snipmate'
  Bundle 'agoconcept/vim-snippets'
+ Bundle 'marijnh/tern_for_vim'
+ Bundle 'dag/vim2hs'
  " vim-scripts repos
  "
  " non github repos
@@ -48,12 +52,23 @@
  "
  " see :h vundle for more details or wiki for FAQ
  " NOTE: comments after Bundle command are not allowed..
- colorscheme solarized
+ colorscheme Tomorrow-Night
 
  "Powerline settings
  set laststatus=2
  set t_Co=256
  let g:Powerline_symbols = 'fancy'
+
+ " Fix el backspace
+ set backspace=indent,eol,start
+
+ set expandtab
+ set tabstop=4
+ set shiftwidth=4
+
+ " Stronger encryption for vimcrypt
+ set cryptmethod=blowfish
+
 
 
 
@@ -66,10 +81,11 @@
  let NERDTreeIgnore = ['\.pyc$']
  "Tagbar
  nmap <C-t> :TagbarToggle<CR>
- "Turninn
+ "Escape to jj
+ map! jj <ESC>
  
- let ropevim_vim_completion = 1
- let ropevim_extended_complete = 1
+ let ropevim_vim_completion = 0
+ let ropevim_extended_complete = 0
  let g:ropevim_autoimport_modules = ["os.*","traceback","direct.*", "xml.etree"]
  imap <c-space> <C-R>=RopeCodeAssistInsertMode()<CR>
  map <C-g>d :call RopeGotoDefinition()<CR>
@@ -161,3 +177,5 @@ function! DoPrettyXML()
   exe "set ft=" . l:origft
 endfunction
 command! PrettyXML call DoPrettyXML()
+
+
