@@ -26,7 +26,8 @@ let g:haskell_conceal_wide = 1
  Bundle 'Lokaltog/vim-powerline'
  Bundle 'majutsushi/tagbar'
  Bundle 'Yggdroot/indentLine'
-" Bundle 'mattn/zencoding-vim'
+ Bundle 'vim-scripts/colorizer'
+ Bundle "mattn/emmet-vim"
  Bundle 'klen/python-mode'
  Bundle 'flazz/vim-colorschemes'
  Bundle 'oblitum/rainbow'
@@ -36,6 +37,7 @@ let g:haskell_conceal_wide = 1
  Bundle 'agoconcept/vim-snippets'
  Bundle 'marijnh/tern_for_vim'
  Bundle 'dag/vim2hs'
+ Bundle 'terryma/vim-expand-region'
  " vim-scripts repos
  "
  " non github repos
@@ -52,7 +54,8 @@ let g:haskell_conceal_wide = 1
  "
  " see :h vundle for more details or wiki for FAQ
  " NOTE: comments after Bundle command are not allowed..
- colorscheme Tomorrow-Night
+ set background=dark
+ colorscheme monokai
 
  "Powerline settings
  set laststatus=2
@@ -62,9 +65,9 @@ let g:haskell_conceal_wide = 1
  " Fix el backspace
  set backspace=indent,eol,start
 
- set expandtab
- set tabstop=4
- set shiftwidth=4
+ autocmd Filetype html setlocal ts=2 sts=2 sw=2 expandtab
+ autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
+ let mapleader=","
 
  " Stronger encryption for vimcrypt
  set cryptmethod=blowfish
@@ -78,13 +81,15 @@ let g:haskell_conceal_wide = 1
  "Key-bindings
  "NERDTree
  nmap <C-i> :NERDTreeToggle<CR>
+ nmap <C-f> :NERDTreeFind<CR>
  let NERDTreeIgnore = ['\.pyc$']
  "Tagbar
  nmap <C-t> :TagbarToggle<CR>
  "Escape to jj
  map! jj <ESC>
  
- let ropevim_vim_completion = 0
+ let g:pymode_rope_guess_project = 1 
+ let g:pymode_doc = 0
  let ropevim_extended_complete = 0
  let g:ropevim_autoimport_modules = ["os.*","traceback","direct.*", "xml.etree"]
  imap <c-space> <C-R>=RopeCodeAssistInsertMode()<CR>
@@ -147,6 +152,7 @@ if 'VIRTUAL_ENV' in os.environ:
     activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
     execfile(activate_this, dict(__file__=activate_this))
     sys.path[:0] = [os.getcwd()]
+    print sys.path
 EOF
 
 function! DoPrettyXML()
@@ -178,4 +184,6 @@ function! DoPrettyXML()
 endfunction
 command! PrettyXML call DoPrettyXML()
 
-
+" Javascript(tern)
+let g:tern_map_keys = 1
+let g:tern_show_argument_hints = 'on_hold'
