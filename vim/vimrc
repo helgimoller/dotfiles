@@ -36,8 +36,12 @@ let g:haskell_conceal_wide = 1
  Bundle 'garbas/vim-snipmate'
  Bundle 'agoconcept/vim-snippets'
  Bundle 'marijnh/tern_for_vim'
+ Bundle 'walm/jshint.vim'
+ Bundle 'heavenshell/vim-jsdoc'
  Bundle 'dag/vim2hs'
  Bundle 'terryma/vim-expand-region'
+ "" GO
+ Bundle 'jnwhiteh/vim-golang'
  " vim-scripts repos
  "
  " non github repos
@@ -55,7 +59,7 @@ let g:haskell_conceal_wide = 1
  " see :h vundle for more details or wiki for FAQ
  " NOTE: comments after Bundle command are not allowed..
  set background=dark
- colorscheme monokai
+ colorscheme Tomorrow-Night
 
  "Powerline settings
  set laststatus=2
@@ -67,6 +71,7 @@ let g:haskell_conceal_wide = 1
 
  autocmd Filetype html setlocal ts=2 sts=2 sw=2 expandtab
  autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
+ autocmd Filetype go setlocal ts=4 sts=4 sw=2 expandtab
  let mapleader=","
 
  " Stronger encryption for vimcrypt
@@ -187,3 +192,6 @@ command! PrettyXML call DoPrettyXML()
 " Javascript(tern)
 let g:tern_map_keys = 1
 let g:tern_show_argument_hints = 'on_hold'
+
+" Golang
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
