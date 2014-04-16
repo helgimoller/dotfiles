@@ -49,6 +49,9 @@ let g:haskell_conceal_wide = 1
  " ...
 
  filetype plugin indent on     " required!
+
+ " indent folding
+ set foldmethod=indent
  "
  " Brief help
  " :BundleList          - list configured bundles
@@ -66,6 +69,13 @@ let g:haskell_conceal_wide = 1
  set t_Co=256
  let g:Powerline_symbols = 'fancy'
 
+" Swapfile settings
+ set backup 
+ set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
+ set backupskip=/tmp/*,/private/tmp/* 
+ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
+ set writebackup
+
  " Fix el backspace
  set backspace=indent,eol,start
 
@@ -76,9 +86,6 @@ let g:haskell_conceal_wide = 1
 
  " Stronger encryption for vimcrypt
  set cryptmethod=blowfish
-
-
-
 
  "Enable vim modeline parsing
  set  modeline
@@ -94,9 +101,10 @@ let g:haskell_conceal_wide = 1
  map! jj <ESC>
  
  let g:pymode_rope_guess_project = 1 
- let g:pymode_doc = 0
+ let g:pymode_rope_complete_on_dot = 0
  let ropevim_extended_complete = 0
  let g:ropevim_autoimport_modules = ["os.*","traceback","direct.*", "xml.etree"]
+ nmap <C-g>q :PymodeLintAuto<CR>
  imap <c-space> <C-R>=RopeCodeAssistInsertMode()<CR>
  map <C-g>d :call RopeGotoDefinition()<CR>
  nmap <c-b> :CtrlPBuffer<CR>
@@ -114,8 +122,8 @@ let g:haskell_conceal_wide = 1
 " ]]            Jump on next class or function (normal, visual, operator modes)
 " [M            Jump on previous class or method (normal, visual, operator modes)
 " ]M            Jump on next class or method (normal, visual, operator modes)
-let g:pymode_rope = 1
 
+let g:pymode_rope = 1
 " Documentation
 let g:pymode_doc = 1
 let g:pymode_doc_key = 'K'
