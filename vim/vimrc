@@ -27,7 +27,7 @@ let g:haskell_conceal_wide = 1
  Plugin 'majutsushi/tagbar'
  Plugin 'Yggdroot/indentLine'
  Plugin 'vim-scripts/colorizer'
- Plugin "mattn/emmet-vim"
+ Plugin 'mattn/emmet-vim'
  Plugin 'flazz/vim-colorschemes'
  Plugin 'oblitum/rainbow'
  Plugin 'tomtom/tlib_vim'
