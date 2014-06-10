@@ -10,44 +10,44 @@ let g:haskell_conceal_wide = 1
 
  " let Vundle manage Vundle
  " required! 
- Bundle 'gmarik/Vundle.vim'
+ Plugin 'gmarik/Vundle.vim'
 
- " My Bundles here:
+ " My Plugins here:
  "
  " original repos on github
- Bundle 'tpope/vim-fugitive'
- Bundle 'Lokaltog/vim-easymotion'
- Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
- Bundle 'kien/ctrlp.vim'
- Bundle 'scrooloose/nerdtree'
- Bundle 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
- Bundle 'scrooloose/syntastic'
- Bundle 'klen/python-mode'
- Bundle 'Lokaltog/vim-powerline'
- Bundle 'majutsushi/tagbar'
- Bundle 'Yggdroot/indentLine'
- Bundle 'vim-scripts/colorizer'
- Bundle "mattn/emmet-vim"
- Bundle 'klen/python-mode'
- Bundle 'flazz/vim-colorschemes'
- Bundle 'oblitum/rainbow'
- Bundle 'tomtom/tlib_vim'
- Bundle 'MarcWeber/vim-addon-mw-utils'
- Bundle 'garbas/vim-snipmate'
- Bundle 'agoconcept/vim-snippets'
- Bundle 'marijnh/tern_for_vim'
- Bundle 'walm/jshint.vim'
- Bundle 'heavenshell/vim-jsdoc'
- Bundle 'dag/vim2hs'
- Bundle 'terryma/vim-expand-region'
+ Plugin 'tpope/vim-fugitive'
+ Plugin 'Lokaltog/vim-easymotion'
+ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+ Plugin 'kien/ctrlp.vim'
+ Plugin 'scrooloose/nerdtree'
+ Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+ Plugin 'scrooloose/syntastic'
+ Plugin 'klen/python-mode'
+ Plugin 'Lokaltog/vim-powerline'
+ Plugin 'majutsushi/tagbar'
+ Plugin 'Yggdroot/indentLine'
+ Plugin 'vim-scripts/colorizer'
+ Plugin "mattn/emmet-vim"
+ Plugin 'klen/python-mode'
+ Plugin 'flazz/vim-colorschemes'
+ Plugin 'oblitum/rainbow'
+ Plugin 'tomtom/tlib_vim'
+ Plugin 'MarcWeber/vim-addon-mw-utils'
+ Plugin 'garbas/vim-snipmate'
+ Plugin 'agoconcept/vim-snippets'
+ Plugin 'marijnh/tern_for_vim'
+ Plugin 'walm/jshint.vim'
+ Plugin 'heavenshell/vim-jsdoc'
+ Plugin 'dag/vim2hs'
+ Plugin 'terryma/vim-expand-region'
  "" GO
- Bundle 'jnwhiteh/vim-golang'
+ Plugin 'jnwhiteh/vim-golang'
 
  call vundle#end()
  " vim-scripts repos
  "
  " non github repos
- "Bundle 'git://git.wincent.com/command-t.git'
+ "Plugin 'git://git.wincent.com/command-t.git'
  " ...
 
  filetype plugin indent on     " required!
@@ -56,13 +56,13 @@ let g:haskell_conceal_wide = 1
  set foldmethod=indent
  "
  " Brief help
- " :BundleList          - list configured bundles
- " :BundleInstall(!)    - install(update) bundles
- " :BundleSearch(!) foo - search(or refresh cache first) for foo
- " :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+ " :PluginList          - list configured bundles
+ " :PluginInstall(!)    - install(update) bundles
+ " :PluginSearch(!) foo - search(or refresh cache first) for foo
+ " :PluginClean(!)      - confirm(or auto-approve) removal of unused bundles
  "
  " see :h vundle for more details or wiki for FAQ
- " NOTE: comments after Bundle command are not allowed..
+ " NOTE: comments after Plugin command are not allowed..
  set background=dark
  colorscheme Tomorrow-Night
 
