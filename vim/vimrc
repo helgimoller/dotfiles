@@ -28,7 +28,6 @@ let g:haskell_conceal_wide = 1
  Plugin 'Yggdroot/indentLine'
  Plugin 'vim-scripts/colorizer'
  Plugin "mattn/emmet-vim"
- Plugin 'klen/python-mode'
  Plugin 'flazz/vim-colorschemes'
  Plugin 'oblitum/rainbow'
  Plugin 'tomtom/tlib_vim'
