@@ -61,7 +61,7 @@ source /etc/zshenv
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="muse"
+ZSH_THEME="agnoster"
 
 ## Dir colors
 
@@ -93,7 +93,6 @@ export LSCOLORS=dxfxcxdxbxegedabagacad
 
 # virtualenv should use Distribute instead of legacy setuptools
 export WORKON_HOME=$HOME/Documents/venvs/
-source /usr/local/bin/virtualenvwrapper.sh
 
 # Centralized location for new virtual environments
 export PIP_VIRTUALENV_BASE=$HOME/Documents/venvs
