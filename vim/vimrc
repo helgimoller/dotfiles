@@ -39,6 +39,8 @@ let g:haskell_conceal_wide = 1
  Plugin 'heavenshell/vim-jsdoc'
  Plugin 'dag/vim2hs'
  Plugin 'terryma/vim-expand-region'
+ Plugin 'WolfgangMehner/vim-plugins'
+ Plugin 'freeo/vim-kalisi'
  "" GO
  Plugin 'jnwhiteh/vim-golang'
 
@@ -166,7 +168,6 @@ if 'VIRTUAL_ENV' in os.environ:
     activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
     execfile(activate_this, dict(__file__=activate_this))
     sys.path[:0] = [os.getcwd()]
-    print sys.path
 EOF
 
 function! DoPrettyXML()

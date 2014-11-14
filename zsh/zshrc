@@ -82,7 +82,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ruby compleat vi-mode autojump coredata)
+plugins=(ruby compleat vi-mode autojump coredata git)
 
 source $ZSH/oh-my-zsh.sh
 bindkey "^[[A" history-beginning-search-backward
@@ -101,5 +101,5 @@ export PIP_REQUIRE_VIRTUALENV=true
 # cache pip-installed packages to avoid re-downloading
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 
-export PATH=/usr/local/sbin:/usr/sbin:/usr/bin:/usr/local/bin:/sbin:/bin:/usr/games:~/.bin:/home/moller//GNUstep/Tools:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/share/java/apache-ant/bin:/usr/share/eclipse:/usr/bin/core_perl:/usr/local/rvm/bin:$PATH
+export PATH=~/Programs/neovim/build/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/usr/local/bin:/sbin:/bin:/usr/games:~/.bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/share/java/apache-ant/bin:/usr/share/eclipse:/usr/bin/core_perl:/usr/local/rvm/bin:$PATH
 
