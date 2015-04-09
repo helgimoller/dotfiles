@@ -27,7 +27,7 @@ font pango:DejaVu Sans Mono 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Shift+Return exec urxvtcd
+bindsym $mod+Shift+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+c kill
@@ -40,10 +40,10 @@ bindsym $mod+p exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -64,10 +64,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+i split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+o split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
@@ -116,12 +116,26 @@ bindsym $mod+Shift+0 move container to workspace 10
 # Change keyboard layouts
 bindsym $mod+n exec /home/helgi/.bin/kb_toggle.sh
 
+# Lock screen
+bindsym $mod+Shift+p exec --no-startup-id i3lock
+
+# Multimedia keys
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -- -5%
+
+# Brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+
+
 # reload the configuration file
 bindsym $mod+Shift+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+q restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+for_window [class="^Spotify Premium$"] floating enable
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -131,10 +145,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -153,6 +167,9 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         position top
-        status_command i3status
+        status_command i3status -c /home/helgi/.i3/i3status.conf
 }
 exec --no-startup-id nm-applet
+exec --no-startup-id sleep 3 && xfce4-power-manager
+exec --no-startup-id setxkbmap is
+exec --no-startup-id /home/helgi/.bin/kb_toggle.sh

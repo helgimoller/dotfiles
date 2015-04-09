@@ -84,6 +84,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(ruby compleat vi-mode autojump coredata git)
 
 source $ZSH/oh-my-zsh.sh
+xrdb -load .Xresources
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
 bindkey "^r" history-incremental-search-backward
