@@ -42,6 +42,7 @@ let g:haskell_conceal_wide = 1
  Plugin 'terryma/vim-expand-region'
  Plugin 'WolfgangMehner/vim-plugins'
  Plugin 'freeo/vim-kalisi'
+ Plugin 'airblade/vim-gitgutter'
  "" GO
  Plugin 'jnwhiteh/vim-golang'
 
@@ -66,7 +67,7 @@ let g:haskell_conceal_wide = 1
  " see :h vundle for more details or wiki for FAQ
  " NOTE: comments after Plugin command are not allowed..
  set background=dark
- colorscheme Tomorrow-Night
+ colorscheme Tomorrow-Night-Eighties
 
  "Powerline settings
  set laststatus=2
