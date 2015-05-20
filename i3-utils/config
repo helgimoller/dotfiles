@@ -127,6 +127,9 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -- -5%
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 
+# Xyan
+bindsym XF86MyComputer exec --no-startup-id /home/helgi/.bin/xyan.py
+
 
 # reload the configuration file
 bindsym $mod+Shift+r reload
@@ -167,7 +170,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         position top
-        status_command i3status -c /home/helgi/.i3/i3status.conf
+        status_command /home/helgi/.i3/i3bar.sh
 }
 exec --no-startup-id nm-applet
 exec --no-startup-id sleep 3 && xfce4-power-manager
