@@ -81,7 +81,7 @@ COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(ruby compleat vi-mode autojump coredata git)
+plugins=(ruby compleat vi-mode autojump coredata git taskwarrior)
 
 source $ZSH/oh-my-zsh.sh
 xrdb -load .Xresources

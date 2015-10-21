@@ -67,7 +67,7 @@ let g:haskell_conceal_wide = 1
  " see :h vundle for more details or wiki for FAQ
  " NOTE: comments after Plugin command are not allowed..
  set background=dark
- colorscheme Tomorrow-Night-Eighties
+ colorscheme molokai
 
  "Powerline settings
  set laststatus=2
@@ -91,7 +91,7 @@ let g:haskell_conceal_wide = 1
  let mapleader=","
 
  " Stronger encryption for vimcrypt
- set cryptmethod=blowfish
+ " set cryptmethod=blowfish
 
  "Enable vim modeline parsing
  set  modeline
@@ -208,3 +208,4 @@ let g:tern_show_argument_hints = 'on_hold'
 
 " Golang
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
+au BufRead,BufNewFile *.sls set filetype=sls
