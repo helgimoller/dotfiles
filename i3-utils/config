@@ -29,10 +29,13 @@ floating_modifier $mod
 
 # KDE window kludges
 for_window [class="Plasma-desktop"] border none
+for_window [class="Plasma"] floating enable
+for_window [class="Plasma"] border none
 for_window [class="Plasma-desktop"] floating enable
 for_window [class="krunner"] border none
 for_window [class="plasmashell"] border none, floating enable
-for_window [class="plasmashell"] floating enable
+for_window [class="plasmashell"] border none, floating enable
+for_window [window_role="pop-up"] floating enable
 for_window [class="Kmix"] floating enable
 for_window [class="Plasmoidviewer"] floating enable
 for_window [class="Klipper"] floating enable, border none
@@ -139,11 +142,7 @@ bindsym $mod+Shift+p exec --no-startup-id i3lock
 #bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 
 # Xyan
-bindsym XF86MyComputer exec --no-startup-id /home/helgi/.bin/xyan.py
-
-# Close the current task
-bindsym XF86Tools exec --no-startup-id task 1 done
-
+bindsym XF86Tools exec --no-startup-id (/home/helgi/.bin/xyan.py && notify-send 'Sending succeeded!') || notify-send 'Failed to send!'
 
 # reload the configuration file
 bindsym $mod+Shift+r reload
@@ -187,7 +186,7 @@ bar {
         status_command /home/helgi/.i3/i3bar.sh
         #status_command i3status -c ~/.i3/i3status.conf
 }
-#exec --no-startup-id nm-applet
+exec --no-startup-id colibri
 #exec --no-startup-id sleep 3 && xfce4-power-manager
 #exec --no-startup-id setxkbmap is
 #exec --no-startup-id /home/helgi/.bin/kb_toggle.sh
