@@ -2,11 +2,11 @@
  filetype off                   " required!
  syntax on
 
-""Haskell stuff
-let g:haskell_conceal_wide = 1
+" No one wants mice..
+set mouse=
 
- set rtp+=~/.vim/bundle/Vundle.vim
- call vundle#begin()
+ set rtp+=~/.nvim/bundle/Vundle.vim
+ call vundle#begin('~/.nvim/bundle')
 
  " let Vundle manage Vundle
  " required! 
@@ -23,7 +23,6 @@ let g:haskell_conceal_wide = 1
  Plugin 'scrooloose/nerdtree'
  Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
  Plugin 'scrooloose/syntastic'
- Plugin 'klen/python-mode'
  Plugin 'Lokaltog/vim-powerline'
  Plugin 'majutsushi/tagbar'
  Plugin 'Yggdroot/indentLine'
@@ -33,16 +32,11 @@ let g:haskell_conceal_wide = 1
  Plugin 'oblitum/rainbow'
  Plugin 'tomtom/tlib_vim'
  Plugin 'MarcWeber/vim-addon-mw-utils'
- Plugin 'garbas/vim-snipmate'
- Plugin 'agoconcept/vim-snippets'
- Plugin 'marijnh/tern_for_vim'
- Plugin 'walm/jshint.vim'
- Plugin 'heavenshell/vim-jsdoc'
- Plugin 'dag/vim2hs'
  Plugin 'terryma/vim-expand-region'
  Plugin 'WolfgangMehner/vim-plugins'
  Plugin 'freeo/vim-kalisi'
  Plugin 'airblade/vim-gitgutter'
+ Plugin 'davidhalter/jedi-vim'
  "" GO
  Plugin 'jnwhiteh/vim-golang'
 
@@ -105,62 +99,17 @@ let g:haskell_conceal_wide = 1
  nmap <C-t> :TagbarToggle<CR>
  "Escape to jj
  map! jj <ESC>
+
+ " Close synastic window
+nmap <C-l> :lclose<CR>
  
- let g:pymode_rope_guess_project = 1 
- let g:pymode_rope_complete_on_dot = 0
- let ropevim_extended_complete = 0
- let g:ropevim_autoimport_modules = ["os.*","traceback","direct.*", "xml.etree"]
- nmap <C-g>q :PymodeLintAuto<CR>
- imap <c-space> <C-R>=RopeCodeAssistInsertMode()<CR>
- map <C-g>d :call RopeGotoDefinition()<CR>
  nmap <c-b> :CtrlPBuffer<CR>
-
-" Python-mode
-" Activate rope
-" Keys:
-" K             Show python docs
-" <Ctrl-Space>  Rope autocomplete
-" <Ctrl-c>g     Rope goto definition
-" <Ctrl-c>d     Rope show documentation
-" <Ctrl-c>f     Rope find occurrences
-" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
-" [[            Jump on previous class or function (normal, visual, operator modes)
-" ]]            Jump on next class or function (normal, visual, operator modes)
-" [M            Jump on previous class or method (normal, visual, operator modes)
-" ]M            Jump on next class or method (normal, visual, operator modes)
-
-let g:pymode_rope = 1
-" Documentation
-let g:pymode_doc = 1
-let g:pymode_doc_key = 'K'
-
-"Linting
-let g:pymode_lint = 1
-let g:pymode_lint_checker = "pyflakes,pep8"
-" Auto check on save
-let g:pymode_lint_write = 1
-
-" Support virtualenv
-let g:pymode_virtualenv = 1
-
-" Enable breakpoints plugin
-let g:pymode_breakpoint = 1
-let g:pymode_breakpoint_key = '<leader>b'
-
-" syntax highlighting
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-let g:pymode_syntax_space_errors = g:pymode_syntax_all
-
-" Don't autofold code
-let g:pymode_folding = 0
 
 " The Rainbowmaker
 au FileType c,cpp,objc,python call rainbow#load()
 
 " Add the virtualenv's site-packages to vim path
-py << EOF
+py3 << EOF
 import os
 import os.path
 import sys
@@ -169,7 +118,9 @@ if 'VIRTUAL_ENV' in os.environ:
     project_base_dir = os.environ['VIRTUAL_ENV']
     sys.path.insert(0, project_base_dir)
     activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-    execfile(activate_this, dict(__file__=activate_this))
+    with open(activate_this) as f:
+        code = compile(f.read(), "activate_this.py", 'exec')
+        exec(code, {"__file__":activate_this}, {})
     sys.path[:0] = [os.getcwd()]
 EOF
 
