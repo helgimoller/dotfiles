@@ -1,115 +1,115 @@
- set nocompatible               " be iMproved
- filetype off                   " required!
- syntax on
+filetype off                   " required!
+syntax on
 
 " No one wants mice..
 set mouse=
 
- set rtp+=~/.nvim/bundle/Vundle.vim
- call vundle#begin('~/.nvim/bundle')
+set rtp+=~/.config/nvim/bundle/Vundle.vim
+call vundle#begin('~/.nvim/bundle')
 
- " let Vundle manage Vundle
- " required! 
- Plugin 'gmarik/Vundle.vim'
+" let Vundle manage Vundle
+" required! 
+Plugin 'gmarik/Vundle.vim'
 
- " My Plugins here:
- "
- " original repos on github
- Plugin 'saltstack/salt-vim'
- Plugin 'tpope/vim-fugitive'
- Plugin 'Lokaltog/vim-easymotion'
- Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
- Plugin 'kien/ctrlp.vim'
- Plugin 'scrooloose/nerdtree'
- Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
- Plugin 'scrooloose/syntastic'
- Plugin 'Lokaltog/vim-powerline'
- Plugin 'majutsushi/tagbar'
- Plugin 'Yggdroot/indentLine'
- Plugin 'vim-scripts/colorizer'
- Plugin 'mattn/emmet-vim'
- Plugin 'flazz/vim-colorschemes'
- Plugin 'oblitum/rainbow'
- Plugin 'tomtom/tlib_vim'
- Plugin 'MarcWeber/vim-addon-mw-utils'
- Plugin 'terryma/vim-expand-region'
- Plugin 'WolfgangMehner/vim-plugins'
- Plugin 'freeo/vim-kalisi'
- Plugin 'airblade/vim-gitgutter'
- Plugin 'davidhalter/jedi-vim'
- "" GO
- Plugin 'jnwhiteh/vim-golang'
+" My Plugins here:
+"
+" original repos on github
+Plugin 'saltstack/salt-vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
+Plugin 'scrooloose/syntastic'
+Plugin 'Lokaltog/powerline'
+Plugin 'majutsushi/tagbar'
+Plugin 'Yggdroot/indentLine'
+Plugin 'vim-scripts/colorizer'
+Plugin 'mattn/emmet-vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'oblitum/rainbow'
+Plugin 'tomtom/tlib_vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'terryma/vim-expand-region'
+Plugin 'WolfgangMehner/vim-plugins'
+Plugin 'freeo/vim-kalisi'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'tpope/vim-unimpaired'
+"" GO
+Plugin 'jnwhiteh/vim-golang'
 
- call vundle#end()
- " vim-scripts repos
- "
- " non github repos
- "Plugin 'git://git.wincent.com/command-t.git'
- " ...
+call vundle#end()
+" vim-scripts repos
+"
+" non github repos
+"Plugin 'git://git.wincent.com/command-t.git'
+" ...
 
- filetype plugin indent on     " required!
+filetype plugin indent on     " required!
 
- " indent folding
- set foldmethod=indent
- "
- " Brief help
- " :PluginList          - list configured bundles
- " :PluginInstall(!)    - install(update) bundles
- " :PluginSearch(!) foo - search(or refresh cache first) for foo
- " :PluginClean(!)      - confirm(or auto-approve) removal of unused bundles
- "
- " see :h vundle for more details or wiki for FAQ
- " NOTE: comments after Plugin command are not allowed..
- set background=dark
- colorscheme molokai
+" indent folding
+set foldmethod=indent
+"
+" Brief help
+" :PluginList          - list configured bundles
+" :PluginInstall(!)    - install(update) bundles
+" :PluginSearch(!) foo - search(or refresh cache first) for foo
+" :PluginClean(!)      - confirm(or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Plugin command are not allowed..
+set background=dark
+colorscheme molokai
 
- "Powerline settings
- set laststatus=2
- set t_Co=256
- let g:Powerline_symbols = 'fancy'
+" Powerline settings
+set laststatus=2
+set t_Co=256
+let g:Powerline_symbols = 'fancy'
 
 " Swapfile settings
- set backup 
- set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
- set backupskip=/tmp/*,/private/tmp/* 
- set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
- set writebackup
+set backup 
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
+set backupskip=/tmp/*,/private/tmp/* 
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp 
+set writebackup
 
- " Fix el backspace
- set backspace=indent,eol,start
+" Fix el backspace
+set backspace=indent,eol,start
 
- autocmd Filetype html setlocal ts=2 sts=2 sw=2 expandtab
- autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
- autocmd Filetype go setlocal ts=4 sts=4 sw=2 expandtab
- autocmd Filetype sls setlocal ts=2 sw=2 expandtab
- let mapleader=","
+autocmd Filetype html setlocal ts=2 sts=2 sw=2 expandtab
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2 expandtab
+autocmd Filetype go setlocal ts=4 sts=4 sw=2 expandtab
+autocmd Filetype sls setlocal ts=2 sw=2 expandtab
+let mapleader=","
 
- " Stronger encryption for vimcrypt
- " set cryptmethod=blowfish
+" Stronger encryption for vimcrypt
+" set cryptmethod=blowfish
 
- "Enable vim modeline parsing
- set  modeline
+"Enable vim modeline parsing
+set  modeline
 
- "Key-bindings
- "NERDTree
- nmap <C-i> :NERDTreeToggle<CR>
- nmap <C-f> :NERDTreeFind<CR>
- let NERDTreeIgnore = ['\.pyc$']
- "Tagbar
- nmap <C-t> :TagbarToggle<CR>
- "Escape to jj
- map! jj <ESC>
+"Key-bindings
+"NERDTree
+nmap <C-i> :NERDTreeToggle<CR>
+nmap <C-f> :NERDTreeFind<CR>
+let NERDTreeIgnore = ['\.pyc$']
+"Tagbar
+nmap <C-t> :TagbarToggle<CR>
+"Escape to jj
+map! jj <ESC>
 
- " Close synastic window
+" Close synastic window
 nmap <C-l> :lclose<CR>
  
- nmap <c-b> :CtrlPBuffer<CR>
+nmap <c-b> :CtrlPBuffer<CR>
 
 " The Rainbowmaker
 au FileType c,cpp,objc,python call rainbow#load()
 
 " Add the virtualenv's site-packages to vim path
-py3 << EOF
+python << EOF
 import os
 import os.path
 import sys
@@ -152,10 +152,6 @@ function! DoPrettyXML()
   exe "set ft=" . l:origft
 endfunction
 command! PrettyXML call DoPrettyXML()
-
-" Javascript(tern)
-let g:tern_map_keys = 1
-let g:tern_show_argument_hints = 'on_hold'
 
 " Golang
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
