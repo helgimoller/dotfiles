@@ -209,7 +209,7 @@ exec --no-startup-id feh --bg-scale /home/helgi/Pictures/wallpapers/Strix-owl-im
 ## Volume control
 #
 ## Path to volume control, without trailing slash
-set $volumepath ~/.i3-volume
+set $volumepath ~/.i3/
 #
 ## Command for the status line (used with -t, must also use -u)
 ##   ie: i3blocks, i3status
