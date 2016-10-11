@@ -41,7 +41,7 @@ for_window [class="Plasmoidviewer"] floating enable
 for_window [class="Klipper"] floating enable, border none
 
 # start a terminal
-bindsym $mod+Shift+Return exec gnome-terminal
+bindsym $mod+Shift+Return exec terminator
 
 # kill focused window
 bindsym $mod+Shift+c kill
@@ -133,23 +133,36 @@ bindsym $mod+n exec /home/helgi/.bin/kb_toggle.sh
 # Lock screen
 bindsym $mod+Shift+p exec --no-startup-id i3lock
 
-# Multimedia keys
-#bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5%
-#bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -- -5%
-
-# Brightness
-#bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
-#bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+# Pulse Audio controls
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+##
+## # Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+##
+## # Touchpad controls
+#bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
+##
+## # Media player controls
+#bindsym XF86AudioPlay exec playerctl play
+#bindsym XF86AudioPause exec playerctl pause
+#bindsym XF86AudioNext exec playerctl next
+#bindsym XF86AudioPrev exec playerctl previous
 
 # Xyan
 bindsym XF86Tools exec --no-startup-id (/home/helgi/.bin/xyan.py && notify-send 'Sending succeeded!') || notify-send 'Failed to send!'
 
 # reload the configuration file
 bindsym $mod+Shift+r reload
+
+# Exit i3 and cinnamon
+bindsym $mod+Shift+e exec cinnamon-session-quit --logout
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+q restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 for_window [class="^Spotify Premium$"] floating enable
 
@@ -186,7 +199,35 @@ bar {
         status_command /home/helgi/.i3/i3bar.sh
         #status_command i3status -c ~/.i3/i3status.conf
 }
-exec --no-startup-id colibri
+exec --no-startup-id setxkbmap us
+exec --no-startup-id dunst -conf /home/helgi/.dunstrc
+exec --no-startup-id feh --bg-scale /home/helgi/Pictures/wallpapers/Strix-owl-image-4k-wallpaper.jpg 
+#exec --no-startup-id colibri
 #exec --no-startup-id sleep 3 && xfce4-power-manager
-#exec --no-startup-id setxkbmap is
 #exec --no-startup-id /home/helgi/.bin/kb_toggle.sh
+
+## Volume control
+#
+## Path to volume control, without trailing slash
+set $volumepath ~/.i3-volume
+#
+## Command for the status line (used with -t, must also use -u)
+##   ie: i3blocks, i3status
+set $statuscmd i3status
+#
+## Signal used to update the status line (used with -u, must also use -t)
+##   i3blocks uses SIGRTMIN+10 by default
+##   i3status uses SIGUSR1 by default
+set $statussig SIGUSR1
+#
+## Amount to increase/decrease volume as a percentage (used with -i, -d)
+set $volumestep 5
+#
+## Symbolic name for sink (numeric index not supported) (used with -s $sinkname)
+##   Recommended: comment out this setting and omit the -s option to use default sink
+##   List sink names: pacmd list-sinks | awk -F "[<>]" '/^\s+name: <.*>/{print $2}' 
+##set $sinkname alsa_output.pci-0000_00_1b.0.analog-stereo 
+#
+bindsym XF86AudioRaiseVolume exec $volumepath/volume -i $volumestep -n -t $statuscmd -u $statussig
+bindsym XF86AudioLowerVolume exec $volumepath/volume -d $volumestep -n -t $statuscmd -u $statussig
+bindsym XF86AudioMute exec $volumepath/volume -m -n -t $statuscmd -u $statussig
