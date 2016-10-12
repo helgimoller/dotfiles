@@ -155,7 +155,7 @@ notify_volume() {
 update_statusline() {
     local signal="$1"
     local proc="$2"
-    pkill "-${signal}" "${proc}"
+    pkill -RTMIN+10 "${proc}"
 }
 
 # Display program usage.
