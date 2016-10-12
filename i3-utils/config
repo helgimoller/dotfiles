@@ -41,7 +41,7 @@ for_window [class="Plasmoidviewer"] floating enable
 for_window [class="Klipper"] floating enable, border none
 
 # start a terminal
-bindsym $mod+Shift+Return exec terminator
+bindsym $mod+Shift+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+c kill
@@ -104,31 +104,31 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace number 1 dev
+bindsym $mod+2 workspace number 2 www
+bindsym $mod+3 workspace number 3 chat
+bindsym $mod+4 workspace number 4 misc
+bindsym $mod+5 workspace number 5 dev
+bindsym $mod+6 workspace number 6 dev
+bindsym $mod+7 workspace number 7 dev
+bindsym $mod+8 workspace number 8 dev
+bindsym $mod+9 workspace number 9 dev
+bindsym $mod+0 workspace number 10 dev
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
 
 # Change keyboard layouts
-bindsym $mod+n exec /home/helgi/.bin/kb_toggle.sh
+bindsym $mod+n exec /home/helgi/.i3/kb_toggle.sh
 
 # Lock screen
 bindsym $mod+Shift+p exec --no-startup-id cinnamon-screensaver-command -l -m "Farðu!"
@@ -216,9 +216,6 @@ client.urgent #d33682 #d33682 #fdf6e3 #dc322f
 exec --no-startup-id setxkbmap us
 exec --no-startup-id dunst -conf /home/helgi/.dunstrc
 exec --no-startup-id feh --bg-scale /home/helgi/Pictures/wallpapers/Strix-owl-image-4k-wallpaper.jpg 
-#exec --no-startup-id colibri
-#exec --no-startup-id sleep 3 && xfce4-power-manager
-#exec --no-startup-id /home/helgi/.bin/kb_toggle.sh
 
 ## Volume control
 #

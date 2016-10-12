@@ -7,4 +7,5 @@ fi
 if [[ $KB_LAYOUT == "us" ]]; then
 	setxkbmap is 
 fi
+pkill -RTMIN+11 i3blocks
 xmodmap /home/helgi/.i3/caps2esc.modmap
