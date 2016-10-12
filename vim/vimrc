@@ -67,6 +67,7 @@ colorscheme molokai
 set laststatus=2
 set t_Co=256
 let g:Powerline_symbols = 'fancy'
+let g:airline_powerline_fonts = 1
 
 " Swapfile settings
 set backup 
@@ -104,6 +105,11 @@ map! jj <ESC>
 nmap <C-l> :lclose<CR>
  
 nmap <c-b> :CtrlPBuffer<CR>
+
+" syntastic python checkers
+let g:syntastic_python_checkers=['flake8']
+let g:syntastic_python_flake8_args='--ignore=E501,E225'
+
 
 " The Rainbowmaker
 au FileType c,cpp,objc,python call rainbow#load()
@@ -156,3 +162,5 @@ command! PrettyXML call DoPrettyXML()
 " Golang
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 au BufRead,BufNewFile *.sls set filetype=sls
+
+
