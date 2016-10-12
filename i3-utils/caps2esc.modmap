@@ -1,5 +1,5 @@
 ! Swap caps lock and escape
-! jremove Lock = Caps_Lock
-! jkeysym Caps_Lock = Escape
-! jadd Lock = Caps_Lock
+remove Lock = Caps_Lock
+keysym Caps_Lock = Escape
+add Lock = Caps_Lock
 keycode 0x9 = grave asciitilde

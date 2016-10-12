@@ -22,7 +22,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'chriskempson/tomorrow-theme', {'rtp': 'vim/'}
 Plugin 'scrooloose/syntastic'
-Plugin 'Lokaltog/powerline'
+Plugin 'vim-airline/vim-airline'
 Plugin 'majutsushi/tagbar'
 Plugin 'Yggdroot/indentLine'
 Plugin 'vim-scripts/colorizer'
