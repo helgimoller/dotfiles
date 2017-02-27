@@ -101,8 +101,11 @@ export PIP_REQUIRE_VIRTUALENV=true
 # cache pip-installed packages to avoid re-downloading
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 # Virtualenvwrapper for ubuntu
-# source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
-source /etc/profile.d/virtualenvwrapper.sh
+if [ -f /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]; then
+  source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+else
+  source /etc/profile.d/virtualenvwrapper.sh
+fi
 
 export PATH=~/.google-cloud-sdk/bin:~/Programs/neovim/build/bin:/usr/local/sbin:/usr/sbin:/usr/bin:/usr/local/bin:/sbin:/bin:/usr/games:~/.bin:~/.terraform:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/share/java/apache-ant/bin:/usr/share/eclipse:/usr/bin/core_perl:/usr/local/rvm/bin:$PATH
 
